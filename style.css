@@ -3,6 +3,21 @@
     padding:0;
     margin: 0;
 }
+html,body
+{
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100%;
+    background-image: url(images/bg1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
 
 .clock-container
 {
@@ -14,6 +29,11 @@
 {
     display: flex;
     justify-content: center;
+}
+
+.viewClock
+{
+    font-size: 10rem;
 }
 
 

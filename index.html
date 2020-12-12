@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>hohoho time</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <h1 class="viewClock">00:00:00</h1>
-        <form class="whatName">
-            <input type="text" placeholder="What is your name?">
-        </form>
-        <!-- <input type="text" placeholder="What is your name?"> -->
-        <p id = "viewName"></p>
-        <script src="clock.js"></script>
-        <script src="whatName.js"></script>
-    </body>
+
+<head>
+    <title>hohoho time</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="clock-container">
+            <h1 class="viewClock">00:00:00</h1>
+        </div>
+        <div class="UserName-container">
+            <form class="whatName">
+                <input type="text" placeholder="What is your name?">
+            </form>
+            <p id="viewName"></p>
+        </div>
+    </div>
+    <script src="./script/clock.js"></script>
+    <script src="./script/whatName.js"></script>
+</body>
+
 </html>

@@ -4,9 +4,16 @@
     margin: 0;
 }
 
-.viewClock
+.clock-container
 {
-    font-size: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.UserName-container
+{
+    display: flex;
+    justify-content: center;
 }
 
 

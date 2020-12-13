@@ -19,6 +19,18 @@ html,body
 }
 
 
+
+.image-container
+{
+    display: flex;   
+}
+
+.bg
+{
+    width:110rem;
+    height:100%;
+}
+
 .clock-container
 {
     display: flex;
@@ -37,11 +49,9 @@ html,body
 
 .slider-container
 {
-
     width:115rem;
     display: flex;
     justify-content: space-between;
-
 }
 
 .right-arrow

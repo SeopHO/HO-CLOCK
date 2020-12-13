@@ -1,6 +1,8 @@
 const body = document.querySelector('body');
+const nextBtn = document.querySelector('.right-arrow');
+const beforeBtn = document.querySelector('.left-arrow');
 
-let bgcnt=3;
+let bgcnt=0;
 
 window.onload = function()
 {
@@ -10,4 +12,7 @@ window.onload = function()
     console.log(false);
 }
 
-
+function init()
+{   
+    
+}

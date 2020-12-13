@@ -1,26 +1,13 @@
 const body = document.querySelector('body');
 
-let bgcnt=1;
+let bgcnt=3;
 
-function bgset()
+window.onload = function()
 {
     let urlString = 'url(images/bg' + bgcnt + '.png)';
     body.style.backgroundImage = urlString;
     body.style.backgroundSize = '100% 100%';
     console.log(false);
-    
 }
 
-function bgLoad()
-{
-    console.log(true);
-    
-    body.addEventListener('onload',bgset);
-}
 
-function init()
-{
-    bgLoad();
-}
-
-init();

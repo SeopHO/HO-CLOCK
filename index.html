@@ -8,30 +8,33 @@
 </head>
 
 <body>
-    <div class="image-container">
-        <img src="images/bg0.png" class="bg">
-        <img src="images/bg1.png" class="bg">
-        <img src="images/bg2.png" class="bg">
-    </div>
-     <div class="slider-container">
-        <img src="images/left-arrow.png" class="left-arrow">
-        <div class="container">
-            <div class="clock-container">
-                <h1 class="viewClock">00:00:00</h1>
-            </div>
-            <div class="UserName-container">
-                <form class="whatName">
-                    <input type="text" placeholder="What is your name?">
-                </form>
-                <p id="viewName"></p>
-            </div>
+
+    <div class="container">
+        <div id="arrow-left" class="arrow"></div>
+        <!-- <img src="images/left-arrow.png" id="arrow-left" class="arrow"> -->
+        <div id="slider">
+            <div class="slide slide1"></div>
+            <div class="slide slide2"></div>
+            <div class="slide slide3"></div>
         </div>
-        <img src="images/right-arrow.png" class="right-arrow">
+        <div id="arrow-right" class="arrow"></div>
+
+        <!-- <img src="images/right-arrow.png" id="arrow-right" class="arrow"> -->
     </div>
+
+    <!-- <div class="clock-container">
+        <h1 class="viewClock">00:00:00</h1>
+    </div> -->
+    <!-- <div class="UserName-container">
+        <form class="whatName">
+            <input type="text" placeholder="What is your name?">
+        </form>
+        <p id="viewName"></p>
+    </div> -->
 
     <script src="./script/clock.js"></script>
     <script src="./script/whatName.js"></script>
-    <script src="script/background.js"></script>
+    <script src="./script/background.js"></script>
 </body>
 
 </html>

@@ -1,83 +1,45 @@
 *
 {
     padding:0;
-    margin: 0;
+    margin:0;
 }
-html,body
+
+.container
 {
     width:100%;
-    height:100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height:100vh;
+}
 
-    /* min-height: 100%;
-    background-image: url(images/bg1.png);
-    background-size: cover;
+.slide
+{
+    background-size:cover;
+    background-position: center;
     background-repeat: no-repeat;
-    background-position: center center; */
 }
 
-
-
-.image-container
+.slide1
 {
-    display: flex;   
+    background-image: url("./images/bg0.jpg");
 }
 
-.bg
+.slide2
 {
-    width:110rem;
-    height:100%;
+    background-image: url("./images/bg1.jpg");
 }
 
-.clock-container
+.slide3
 {
-    display: flex;
-    justify-content: center;
-    width:100%;
-    height:100%;
+    background-image: url("./images/bg2.jpg");
 }
 
-.UserName-container
+.arrow
 {
-    display: flex;
-    justify-content: center;
-    width:100%;
-    height:100%;
-}
-
-.slider-container
-{
-    width:115rem;
-    display: flex;
-    justify-content: space-between;
-}
-
-.right-arrow
-{
-    position: relative;
-    top:7rem;
-    width:3rem;
-    height:3rem;
+    width:100px;
+    height:100px;
     cursor: pointer;
 }
 
-.left-arrow
-{
-    position: relative;
-    top:7rem;
-    width:3rem;
-    height:3rem;
-    cursor: pointer;
 
-}
-
-
-.viewClock
-{
-    font-size: 10rem;
-}
 
 
 

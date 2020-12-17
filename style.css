@@ -4,7 +4,7 @@
     margin:0;
 }
 
-.container
+.container,.slide,.arrow
 {
     width:100%;
     height:100vh;
@@ -12,6 +12,9 @@
 
 .slide
 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -36,11 +39,17 @@
 {
     width:100px;
     height:100px;
-    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    filter: opacity(.3) drop-shadow(0 0 0 #191919);
+}
+#arrow-right
+{
+    right:5px;
 }
 
-
-
-
-
-
+.viewClock
+{
+    font-size: 5rem;
+    color:
+}

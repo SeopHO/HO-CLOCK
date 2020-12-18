@@ -8,16 +8,19 @@
 {
     width:100%;
     height:100vh;
+    overflow:hidden;
 }
 
 .slide
 {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
+    
 }
 
 .slide1
@@ -43,13 +46,20 @@
     top: 45%;
     filter: opacity(.3) drop-shadow(0 0 0 #191919);
 }
+
+#arrow-left
+{
+    cursor: pointer;
+}
+
 #arrow-right
 {
     right:5px;
+    cursor: pointer;
 }
 
 .viewClock
 {
-    font-size: 5rem;
-    color:
+    font-size: 10rem;
+    color: #fff 
 }

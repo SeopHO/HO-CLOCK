@@ -20,7 +20,6 @@
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
-    
 }
 
 .slide1
@@ -58,8 +57,17 @@
     cursor: pointer;
 }
 
+.clock-container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .viewClock
 {
+    position:absolute;
+    top:37%;
     font-size: 10rem;
-    color: #fff 
+    color: #fff; 
 }

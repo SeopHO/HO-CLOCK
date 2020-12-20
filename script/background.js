@@ -1,52 +1,59 @@
-const imageSlier = document.querySelectorAll(".slide");
-
+const imageSlider = document.querySelectorAll(".slide");
 const arrowPre = document.getElementById("arrow-left");
 const arrowNext = document.getElementById("arrow-right");
 
-let currentValue=null;
-let sliderSize = imageSlier.length-1;
+let currentValue=0;
 
-function manage(currentValue=0)
+//clear all images
+function resetImage()
 {
-    if(currentValue > sliderSize)
-        currentValue= currentValue-sliderSize
-    else if(currentValue < 0)
-        currentValue=imageSlier.length-1;
-
-    for(let i=0;i<imageSlier.length;i++)
+    for(let i=0;i<imageSlider.length;i++)
     {
-        imageSlier[i].style.display = "none";
-        if(i === currentValue)
-        {
-            imageSlier[currentValue].style.display="block";
-            continue;
-        }
+        imageSlider[i].style.display = "none";
     }
 }
 
-function pre()
+function startSlide()
 {
-    currentValue--;
-    console.log(currentValue-1);
-    manage(currentValue-1);
-    
+    resetImage();
+    imageSlider[0].style.display="block";
 }
 
-function next()
+function preSlide()
 {
-    currentValue++;
-    console.log(currentValue-1);
-    manage(currentValue-1);
+    resetImage();
+    imageSlider[currentValue-1].style.display="block";
+    currentValue--;
 }
+
+function nextSlide()
+{
+    resetImage();
+    imageSlider[currentValue+1].style.display="block";
+    currentValue++;
+}
+
+arrowPre.addEventListener("click",function()
+{
+    if(currentValue===0)
+    {
+        currentValue = imageSlider.length;
+    }
+    preSlide();
+});
+
+arrowNext.addEventListener("click",function()
+{
+    if(currentValue===imageSlider.length-1)
+    {
+        currentValue = -1;
+    }
+    nextSlide();
+});
 
 function init()
 {
-    console.log(imageSlier.length);
-    
-    arrowPre.addEventListener("click",pre);
-    arrowNext.addEventListener("click",next);
+    startSlide();
 }
-
-
 
 init();

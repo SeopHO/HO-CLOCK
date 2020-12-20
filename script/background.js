@@ -2,9 +2,16 @@ const imageSlider = document.querySelectorAll(".slide");
 const arrowPre = document.getElementById("arrow-left");
 const arrowNext = document.getElementById("arrow-right");
 
-let currentValue=0;
+let currentValue=1; //Slider value
+let CURRENT_SLIDER = "currentValue";
+// let currentValue = localStorage.getItem(CURRENT_SLIDER);
+//-------------------------Slider-------------------------
+function saveImage(value=currentValue)
+{
+    localStorage.setItem(CURRENT_SLIDER,value);
+}
 
-//clear all images
+
 function resetImage()
 {
     for(let i=0;i<imageSlider.length;i++)
@@ -16,7 +23,7 @@ function resetImage()
 function startSlide()
 {
     resetImage();
-    imageSlider[0].style.display="block";
+    imageSlider[localStorage.getItem(CURRENT_SLIDER)].style.display="block";
 }
 
 function preSlide()
@@ -24,6 +31,7 @@ function preSlide()
     resetImage();
     imageSlider[currentValue-1].style.display="block";
     currentValue--;
+    saveImage(currentValue);
 }
 
 function nextSlide()
@@ -31,6 +39,8 @@ function nextSlide()
     resetImage();
     imageSlider[currentValue+1].style.display="block";
     currentValue++;
+    saveImage(currentValue);
+
 }
 
 arrowPre.addEventListener("click",function()
@@ -53,6 +63,7 @@ arrowNext.addEventListener("click",function()
 
 function init()
 {
+    saveImage();
     startSlide();
 }
 

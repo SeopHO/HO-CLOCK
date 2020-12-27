@@ -3,17 +3,17 @@ const arrowPre = document.getElementById("arrow-left");
 const arrowNext = document.getElementById("arrow-right");
 
 let CURRENT_SLIDER = "current_Slide_Value";
-let PAST_SLIDER = "Past_Slide_Value";
 
-let Past_Slide_Value;
-let current_Slide_Value;
+// https://stackoverflow.com/questions/5104053/fade-effect-using-javascript-no-jquery
+
+
+let current_Slide_Value=null;
 
 // let current_Slide_Value = localStorage.getItem(CURRENT_SLIDER);
 //-------------------------Slider-------------------------
-function saveImage(value=current_Slide_Value,Past_Slide_Value)
+function saveImage(value=current_Slide_Value)
 {
     localStorage.setItem(CURRENT_SLIDER,value);
-    localStorage.setItem(PAST_SLIDER,Past_Slide_Value);
 }
 
 function resetImage()
@@ -25,31 +25,11 @@ function resetImage()
 }
 function loadImage()
 {
-    // console.log('지남');
-    current_Slide_Value=localStorage.getItem(CURRENT_SLIDER);
-    saveImage(current_Slide_Value);
-    if(Past_Slide_Value===null)
+    if(current_Slide_Value===null)
     {
-        Past_Slide_Value =0;
+        current_Slide_Value = 0;
+        saveImage(current_Slide_Value);
     }
-
-    if(slideOnOf===true)
-    {
-        ArrowOn();
-        startSlide();
-    }
-    else if(slideOnOf===false)
-    {
-        ArrowOff();
-        resetImage();
-    }
-    // if(current_Slide_Value===undefined || current_Slide_Value===0)
-    // {
-    //     current_Slide_Value=0;
-    //     saveImage(current_Slide_Value);
-    // }
-    // else
-    //     return;
 }
 function startSlide()
 {
@@ -74,8 +54,7 @@ function preSlide()
     resetImage();
     imageSlider[current_Slide_Value-1].style.display="block";
     current_Slide_Value--;
-    Past_Slide_Value--;
-    saveImage(current_Slide_Value,Past_Slide_Value);
+    saveImage(current_Slide_Value);
 }
 
 function nextSlide()
@@ -83,8 +62,7 @@ function nextSlide()
     resetImage();
     imageSlider[current_Slide_Value+1].style.display="block";
     current_Slide_Value++;
-    Past_Slide_Value++;
-    saveImage(current_Slide_Value,Past_Slide_Value);
+    saveImage(current_Slide_Value);
 }
 
 arrowPre.addEventListener("click",function()
@@ -105,9 +83,50 @@ arrowNext.addEventListener("click",function()
     nextSlide();
 });
 
+function fadeIn(el,val) {
+    if (isNaN(val)) {
+        val = 0;
+    }
+    arrowNext.style.opacity = '0.' + val;
+    if (val < 9) {
+        val++;
+        setTimeout('fadeIn("' + el + '",' + val + ')', 90);
+    }
+    else 
+    {
+        return;
+    }
+}
+
+function fadeOut(el,val) {
+    if (isNaN(val)) {
+        val = 9;
+    }
+    arrowPre.style.opacity = '0.' + val;
+    if (val > 0) {
+        val--;
+        setTimeout('fadeOut("' + el + '",' + val + ')', 90);
+    }
+    else 
+    {
+        return;
+    }
+}
+
 function init()
 {
     loadImage();
+    if(slideOnOf===true)
+    {
+        fadeIn(arrowNext);
+        fadeIn(arrowPre);
+        ArrowOn();
+        startSlide();
+    }
+    else if(slideOnOf===false)
+    {
+        ArrowOff();
+        resetImage();
+    }
 }
-
 init();

@@ -5,7 +5,6 @@ const viewName = document.getElementById("viewName");
 
 const USER = "currentUser";
 
-
 function askName()
 {   
     form.addEventListener('submit',handleSubmit);

@@ -27,6 +27,16 @@ function startSlide()
     imageSlider[localStorage.getItem(CURRENT_SLIDER)].style.display="block";
 }
 
+function ArrowOn()
+{   
+    arrowNext.style.display="block";
+    arrowPre.style.display="block";
+}
+function ArrowOff()
+{
+    arrowNext.style.display="none";
+    arrowPre.style.display="none";
+}
 
 
 function preSlide()
@@ -65,7 +75,17 @@ arrowNext.addEventListener("click",function()
 
 function init()
 {
-    startSlide();
+    if(slideOnOf===true)
+    {
+        ArrowOn();
+        startSlide();
+    }
+    else if(slideOnOf===false)
+    {
+        ArrowOff();
+        resetImage();
+    }
+    
 }
 
 init();

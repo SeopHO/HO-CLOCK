@@ -17,6 +17,8 @@ slide_toggle.addEventListener("click",function(){
     else if(slideOnOf===true)
         slideOnOf=false;
 
+    init();
+
     save_slide_toggle(slideOnOf);
 });
 

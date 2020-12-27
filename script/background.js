@@ -2,15 +2,16 @@ const imageSlider = document.querySelectorAll(".slide");
 const arrowPre = document.getElementById("arrow-left");
 const arrowNext = document.getElementById("arrow-right");
 
-let currentValue=1; //Slider value
-let CURRENT_SLIDER = "currentValue";
-// let currentValue = localStorage.getItem(CURRENT_SLIDER);
+let current_Slide_Value=1; //Slider value
+let CURRENT_SLIDER = "current_Slide_Value";
+
+let SlideOnOf=true;
+// let current_Slide_Value = localStorage.getItem(CURRENT_SLIDER);
 //-------------------------Slider-------------------------
-function saveImage(value=currentValue)
+function saveImage(value)
 {
     localStorage.setItem(CURRENT_SLIDER,value);
 }
-
 
 function resetImage()
 {
@@ -26,44 +27,44 @@ function startSlide()
     imageSlider[localStorage.getItem(CURRENT_SLIDER)].style.display="block";
 }
 
+
+
 function preSlide()
 {
     resetImage();
-    imageSlider[currentValue-1].style.display="block";
-    currentValue--;
-    saveImage(currentValue);
+    imageSlider[current_Slide_Value-1].style.display="block";
+    current_Slide_Value--;
+    saveImage(current_Slide_Value);
 }
 
 function nextSlide()
 {
     resetImage();
-    imageSlider[currentValue+1].style.display="block";
-    currentValue++;
-    saveImage(currentValue);
-
+    imageSlider[current_Slide_Value+1].style.display="block";
+    current_Slide_Value++;
+    saveImage(current_Slide_Value);
 }
 
 arrowPre.addEventListener("click",function()
 {
-    if(currentValue===0)
+    if(current_Slide_Value===0)
     {
-        currentValue = imageSlider.length;
+        current_Slide_Value = imageSlider.length;
     }
     preSlide();
 });
 
 arrowNext.addEventListener("click",function()
 {
-    if(currentValue===imageSlider.length-1)
+    if(current_Slide_Value===imageSlider.length-1)
     {
-        currentValue = -1;
+        current_Slide_Value = -1;
     }
     nextSlide();
 });
 
 function init()
 {
-    saveImage();
     startSlide();
 }
 

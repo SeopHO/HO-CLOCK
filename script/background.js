@@ -45,6 +45,8 @@ function ArrowOn()
 
 function ArrowOff()
 {
+    
+
     arrowNext.style.display="none";
     arrowPre.style.display="none";
 }
@@ -83,16 +85,20 @@ arrowNext.addEventListener("click",function()
     nextSlide();
 });
 
-function fadeIn(el,val) {
-    if (isNaN(val)) {
-        val = 0;
+function fadeIn() 
+{
+    let opc1 = 0;
+    let opc2 = 0;
+
+
+    if (opc1 < 9 & opc2 < 9) 
+    {
+        opc1++;
+        opc2++;
+        arrowNext.style.opacity = '0.' + opc1;
+        arrowPre.style.opacity = '0.' + opc2;
     }
-    arrowNext.style.opacity = '0.' + val;
-    if (val < 9) {
-        val++;
-        setTimeout('fadeIn("' + el + '",' + val + ')', 90);
-    }
-    else 
+    else
     {
         return;
     }
@@ -102,7 +108,7 @@ function fadeOut(el,val) {
     if (isNaN(val)) {
         val = 9;
     }
-    arrowPre.style.opacity = '0.' + val;
+    el.style.opacity = '0.' + val;
     if (val > 0) {
         val--;
         setTimeout('fadeOut("' + el + '",' + val + ')', 90);
@@ -118,8 +124,7 @@ function init()
     loadImage();
     if(slideOnOf===true)
     {
-        fadeIn(arrowNext);
-        fadeIn(arrowPre);
+        setInterval(fadeIn,10);
         ArrowOn();
         startSlide();
     }

@@ -50,7 +50,8 @@ body
     height:100px;
     position: absolute;
     top: 45%;
-    filter: opacity(.3) drop-shadow(0 0 0 #191919);
+    color:gray;
+    opacity: 0.6;
 }
 
 #arrow-left

@@ -1,8 +1,12 @@
 const imageSlider = document.querySelectorAll(".slide");
 const arrowPre = document.getElementById("arrow-left");
 const arrowNext = document.getElementById("arrow-right");
+const arrow = document.querySelector(".arrow");
+
 
 let CURRENT_SLIDER = "current_Slide_Value";
+
+let opc;
 
 // https://stackoverflow.com/questions/5104053/fade-effect-using-javascript-no-jquery
 
@@ -39,16 +43,30 @@ function startSlide()
 
 function ArrowOn()
 {   
-    arrowNext.style.display="block";
-    arrowPre.style.display="block";
+    // arrowNext.style.opacity=1;
+    // arrowPre.style.opacity=1;
+
+    let Interval = setInterval(function()
+    {
+        opc=0;
+        if(opc<5)
+        {
+            opc++;
+            arrowNext.style.opacity=`0.`+opc;
+            arrowPre.style.opacity=`0.`+opc;
+        }
+        else
+        {
+            clearInterval(Interval);
+        }
+    },1000);
 }
 
 function ArrowOff()
 {
-    
+    arrowNext.style.opacity=0;
+    arrowPre.style.opacity=0;
 
-    arrowNext.style.display="none";
-    arrowPre.style.display="none";
 }
 
 function preSlide()
@@ -85,46 +103,11 @@ arrowNext.addEventListener("click",function()
     nextSlide();
 });
 
-function fadeIn() 
-{
-    let opc1 = 0;
-    let opc2 = 0;
-
-
-    if (opc1 < 9 & opc2 < 9) 
-    {
-        opc1++;
-        opc2++;
-        arrowNext.style.opacity = '0.' + opc1;
-        arrowPre.style.opacity = '0.' + opc2;
-    }
-    else
-    {
-        return;
-    }
-}
-
-function fadeOut(el,val) {
-    if (isNaN(val)) {
-        val = 9;
-    }
-    el.style.opacity = '0.' + val;
-    if (val > 0) {
-        val--;
-        setTimeout('fadeOut("' + el + '",' + val + ')', 90);
-    }
-    else 
-    {
-        return;
-    }
-}
-
 function init()
 {
     loadImage();
     if(slideOnOf===true)
     {
-        setInterval(fadeIn,10);
         ArrowOn();
         startSlide();
     }

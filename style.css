@@ -50,13 +50,14 @@ body
     height:100px;
     position: absolute;
     top: 45%;
-    color:gray;
-    opacity: 0.6;
+    color:grey;
+    opacity: 0.4;
 }
 
 #arrow-left
 {
     cursor: pointer;
+    color:red;
 }
 
 #arrow-right

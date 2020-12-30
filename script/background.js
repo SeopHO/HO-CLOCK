@@ -1,15 +1,10 @@
 const imageSlider = document.querySelectorAll(".slide");
-const arrowPre = document.getElementById("arrow-left");
-const arrowNext = document.getElementById("arrow-right");
-const arrow = document.querySelector(".arrow");
-
 
 let CURRENT_SLIDER = "current_Slide_Value";
 
 let opc;
 
 // https://stackoverflow.com/questions/5104053/fade-effect-using-javascript-no-jquery
-
 
 let current_Slide_Value=null;
 
@@ -27,6 +22,7 @@ function resetImage()
         imageSlider[i].style.display = "none";
     }
 }
+
 function loadImage()
 {
     if(current_Slide_Value===null)
@@ -35,38 +31,11 @@ function loadImage()
         saveImage(current_Slide_Value);
     }
 }
+
 function startSlide()
 {
     resetImage();
     imageSlider[localStorage.getItem(CURRENT_SLIDER)].style.display="block";
-}
-
-function ArrowOn()
-{   
-    // arrowNext.style.opacity=1;
-    // arrowPre.style.opacity=1;
-
-    let Interval = setInterval(function()
-    {
-        opc=0;
-        if(opc<5)
-        {
-            opc++;
-            arrowNext.style.opacity=`0.`+opc;
-            arrowPre.style.opacity=`0.`+opc;
-        }
-        else
-        {
-            clearInterval(Interval);
-        }
-    },1000);
-}
-
-function ArrowOff()
-{
-    arrowNext.style.opacity=0;
-    arrowPre.style.opacity=0;
-
 }
 
 function preSlide()
@@ -103,18 +72,18 @@ arrowNext.addEventListener("click",function()
     nextSlide();
 });
 
-function init()
+function BGinit()
 {
     loadImage();
-    if(slideOnOf===true)
-    {
-        ArrowOn();
-        startSlide();
-    }
-    else if(slideOnOf===false)
-    {
-        ArrowOff();
-        resetImage();
-    }
+    // if(slideOnOf===true)
+    // {
+    //     ArrowOn();
+    //     startSlide();
+    // }
+    // else if(slideOnOf===false)
+    // {
+    //     ArrowOff();
+    //     resetImage();
+    // }
 }
-init();
+BGinit();

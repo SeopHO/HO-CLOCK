@@ -1,18 +1,26 @@
 const imageSlider = document.querySelectorAll(".slide");
+const arrowPre = document.getElementById("arrow-left");
+const arrowNext = document.getElementById("arrow-right");
 
-let CURRENT_SLIDER = "current_Slide_Value";
+const slide_toggle = document.querySelector(".slide-toggle");
 
-let opc;
+let bgValue=0;
+const CURRENT_BG_VALUE_LS = "Current-Background-Value";
 
-// https://stackoverflow.com/questions/5104053/fade-effect-using-javascript-no-jquery
+let bgVisible=false; 
+const BG_VISIBLE_LS = "Background-Visible";
 
-let current_Slide_Value=null;
 
-// let current_Slide_Value = localStorage.getItem(CURRENT_SLIDER);
-//-------------------------Slider-------------------------
+function savelocal()
+{
+    localStorage.setItem(CURRENT_BG_VALUE_LS,bgValue);
+    localStorage.setItem(BG_VISIBLE_LS,bgVisible);
+
+}
+
 function saveImage(value=current_Slide_Value)
 {
-    localStorage.setItem(CURRENT_SLIDER,value);
+
 }
 
 function resetImage()
@@ -25,20 +33,16 @@ function resetImage()
 
 function loadImage()
 {
-    if(current_Slide_Value===null)
-    {
-        current_Slide_Value = 0;
-        saveImage(current_Slide_Value);
-    }
+     saveImage(current_Slide_Value);
 }
 
-function startSlide()
+function startImage()
 {
     resetImage();
     imageSlider[localStorage.getItem(CURRENT_SLIDER)].style.display="block";
 }
 
-function preSlide()
+function preImage()
 {
     resetImage();
     imageSlider[current_Slide_Value-1].style.display="block";
@@ -46,7 +50,7 @@ function preSlide()
     saveImage(current_Slide_Value);
 }
 
-function nextSlide()
+function nextImage()
 {
     resetImage();
     imageSlider[current_Slide_Value+1].style.display="block";
@@ -60,7 +64,7 @@ arrowPre.addEventListener("click",function()
     {
         current_Slide_Value = imageSlider.length;
     }
-    preSlide();
+    preImage();
 });
 
 arrowNext.addEventListener("click",function()
@@ -69,21 +73,71 @@ arrowNext.addEventListener("click",function()
     {
         current_Slide_Value = -1;
     }
-    nextSlide();
+    nextImage();
 });
 
-function BGinit()
+slide_toggle.addEventListener("click",function()
 {
-    loadImage();
-    // if(slideOnOf===true)
-    // {
-    //     ArrowOn();
-    //     startSlide();
-    // }
-    // else if(slideOnOf===false)
-    // {
-    //     ArrowOff();
-    //     resetImage();
-    // }
+    if(slideOnOf===false)
+    {
+        slideOnOf = true;
+        judge(true);
+    }
+    else if(slideOnOf===true)
+    {
+        slideOnOf = false;
+        judge(false);
+
+    }
+});
+
+function ArrowOn()
+{   
+    let Interval = setInterval(function()
+    {
+        if(opc<4)
+        {
+            opc++;
+            arrowNext.style.opacity=`0.`+opc;
+            arrowPre.style.opacity=`0.`+opc;
+        }
+        else
+        {
+            console.log('clear');
+            clearInterval(Interval);
+        }
+    },1000);
 }
-BGinit();
+
+function ArrowOff()
+{    
+    let Interval = setInterval(function()
+    {
+        if(opc>0)
+        {
+            opc--;
+            arrowNext.style.opacity=`0.`+opc;
+            arrowPre.style.opacity=`0.`+opc;
+        }
+        else
+        {
+            console.log('clear');
+            clearInterval(Interval);
+        }
+    },1000);
+}
+
+function judge(bool)
+{
+    if(bool === true)
+    {
+        console.log(1);
+        ArrowOn();
+    }
+    else if(bool === false)
+    {
+        console.log(0);
+        ArrowOff();
+    }
+}
+

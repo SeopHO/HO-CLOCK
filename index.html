@@ -9,32 +9,35 @@
 
 <body>
 
-    <div class="container">
-        <!-- <div id="arrow-left" class="arrow"></div> -->
-        <img src="images/left-arrow.png" id="arrow-left" class="arrow">
-        <div id="slider">
-            <div class="clock-container">
-                <h1 class="viewClock">00:00:00</h1>
+        <div id="snow_fall" class="container">
+            <!-- <div id="arrow-left" class="arrow"></div> -->
+    
+            <img src="images/left-arrow.png" id="arrow-left" class="arrow">
+            <div id="slider">
+                <div class="clock-container">
+                    <h1 class="viewClock">00:00:00</h1>
+                </div>
+                <div class="slide-toggle">
+                    <input type="checkbox">
+                    <div class="toggle1 round1"></div>
+                    <p class="text-background">Background</p>
+                </div>
+                <div class="snow-toggle">
+                    <input type="checkbox">
+                    <div class="toggle2 round2"></div>
+                    <p class="text-snow">Snow</p>
+                </div>
+    
+                <div class="slide slide1"></div>
+                <div class="slide slide2"></div>
+                <div class="slide slide3"></div>
             </div>
-            <div class="slide-toggle">
-                <input type="checkbox">
-                <div class="toggle1 round1"></div>
-                <p class="text-background">Background</p>
-            </div>
-            <div class="snow-toggle">
-                <input type="checkbox">
-                <div class="toggle2 round2"></div>
-                <p class="text-snow">Snow</p>
-            </div>
-
-            <div class="slide slide1"></div>
-            <div class="slide slide2"></div>
-            <div class="slide slide3"></div>
+            <!-- <div id="arrow-right" class="arrow"></div> -->
+    
+            <img src="images/right-arrow.png" id="arrow-right" class="arrow">
+    
+    
         </div>
-        <!-- <div id="arrow-right" class="arrow"></div> -->
-
-        <img src="images/right-arrow.png" id="arrow-right" class="arrow">
-    </div>
 
     <!-- <div class="clock-container">
         <h1 class="viewClock">00:00:00</h1>
@@ -48,9 +51,10 @@
 
     <script src="./script/clock.js"></script>
     <script src="./script/whatName.js"></script>
-    <script src="./script/toggle.js"></script>
     <script src="./script/background.js"></script>
-
+    <script src="./script/snow.js"></script>
+    <script src="./script/particles.js"></script>
+    <script src="./script/app.js"></script>
 </body>
 
 </html>

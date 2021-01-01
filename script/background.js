@@ -10,6 +10,9 @@ const CURRENT_BG_VALUE_LS = "Current-Background-Value";
 let bgVisible=false; 
 const BG_VISIBLE_LS = "Background-Visible";
 
+let visited = false;
+const VISITED_LS = "Visited";
+
 
 let opc;
 
@@ -17,6 +20,7 @@ function savelocal()
 {
     localStorage.setItem(CURRENT_BG_VALUE_LS,bgValue);
     localStorage.setItem(BG_VISIBLE_LS,bgVisible);
+    localStorage.setItem(VISITED_LS,visited);
 }
 
 function resetImage()
@@ -25,11 +29,6 @@ function resetImage()
     {
         imageSlider[i].style.display = "none";
     }
-}
-
-function load()
-{
-
 }
 
 function startImage()
@@ -74,11 +73,14 @@ arrowNext.addEventListener("click",function()
 
 function ArrowOn()
 {   
+    opc=0;
     let Interval = setInterval(function()
     {
         if(opc<4)
         {
             opc++;
+            console.log(opc);
+            
             arrowNext.style.opacity=`0.`+opc;
             arrowPre.style.opacity=`0.`+opc;
         }
@@ -87,16 +89,19 @@ function ArrowOn()
             console.log('clear');
             clearInterval(Interval);
         }
-    },1000);
+    },50);
 }
 
 function ArrowOff()
 {    
+    opc=4;
     let Interval = setInterval(function()
     {
-        if(opc<0)
+        if(opc>0)
         {
             opc--;
+            console.log(opc);
+
             arrowNext.style.opacity=`0.`+opc;
             arrowPre.style.opacity=`0.`+opc;
         }
@@ -105,7 +110,7 @@ function ArrowOff()
             console.log('clear');
             clearInterval(Interval);
         }
-    },1000);
+    },50);
 }
 
 function judge(bool)
@@ -144,6 +149,14 @@ slide_toggle.addEventListener("click",function()
 window.addEventListener('load', function()
 {
     savelocal();
+
+    if(visited === false)
+    {
+        bgValue=0;
+        visited=true;
+        savelocal();
+    }
+
     if(bgVisible === false)
     {
         judge(false);

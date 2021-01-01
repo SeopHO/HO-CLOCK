@@ -71,46 +71,60 @@ arrowNext.addEventListener("click",function()
     nextImage();
 });
 
-function ArrowOn()
-{   
-    opc=0;
-    let Interval = setInterval(function()
+function fadeIn(value) 
+{
+    switch (value) 
     {
-        if(opc<4)
-        {
-            opc++;
-            console.log(opc);
-            
-            arrowNext.style.opacity=`0.`+opc;
-            arrowPre.style.opacity=`0.`+opc;
-        }
-        else
-        {
-            console.log('clear');
-            clearInterval(Interval);
-        }
-    },50);
+        case 'Arrow':
+            arrowNext.style.display="block";
+            arrowNext.style.display="block";
+            opc = 0;
+            let Interval = setInterval(function (){
+                if (opc < 4) 
+                {
+                    opc++;
+                    console.log(opc);
+
+                    arrowNext.style.opacity = `0.` + opc;
+                    arrowPre.style.opacity = `0.` + opc;
+                }
+                else 
+                {
+                    console.log('clear');
+                    clearInterval(Interval);
+
+                }
+            }, 50);
+
+    }
+
 }
 
-function ArrowOff()
-{    
-    opc=4;
-    let Interval = setInterval(function()
+function fadeOut(value) 
+{
+    switch (value) 
     {
-        if(opc>0)
-        {
-            opc--;
-            console.log(opc);
+        case 'Arrow':
+            opc = 4;
+            let Interval = setInterval(function () {
+                if (opc > 0) {
+                    opc--;
+                    console.log(opc);
 
-            arrowNext.style.opacity=`0.`+opc;
-            arrowPre.style.opacity=`0.`+opc;
-        }
-        else
-        {
-            console.log('clear');
-            clearInterval(Interval);
-        }
-    },50);
+                    arrowNext.style.opacity = `0.` + opc;
+                    arrowPre.style.opacity = `0.` + opc;
+                }
+                else {
+                    console.log('clear');
+                    clearInterval(Interval);
+                    arrowNext.style.display="none";
+                    arrowNext.style.display="none";
+
+                }
+            }, 50);
+
+    }
+
 }
 
 function judge(bool)
@@ -119,13 +133,13 @@ function judge(bool)
     {
         console.log(1);
         startImage();
-        ArrowOn();
+        fadeIn('Arrow');
     }
     else if(bool === false)
     {
         console.log(0);
         resetImage();
-        ArrowOff();
+        fadeOut('Arrow');
     }
 }
 
@@ -166,11 +180,3 @@ window.addEventListener('load', function()
         judge(true);
     }
 });
-
-
-function BGinit()
-{
-
-}
-
-BGinit();

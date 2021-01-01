@@ -51,6 +51,7 @@ body
     position: absolute;
     top: 45%;
     color:grey;
+    opacity: 0;
 }
 
 #arrow-left

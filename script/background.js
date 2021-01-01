@@ -10,17 +10,13 @@ const CURRENT_BG_VALUE_LS = "Current-Background-Value";
 let bgVisible=false; 
 const BG_VISIBLE_LS = "Background-Visible";
 
-let visitCnt=null;
-let firstVIsit=null;
-const VISIT_LS = "Visit-Count";
 
 let opc;
 
-function savelocal(bgValue,bgVisible,visitCnt)
+function savelocal()
 {
     localStorage.setItem(CURRENT_BG_VALUE_LS,bgValue);
     localStorage.setItem(BG_VISIBLE_LS,bgVisible);
-    localStorage.setItem(VISIT_LS,visitCnt);
 }
 
 function resetImage()
@@ -33,12 +29,12 @@ function resetImage()
 
 function load()
 {
-     savelocal(bgValue,bgVisible,visitCnt);
+
 }
 
 function startImage()
 {
-    resetImage();
+    // resetImage();
     imageSlider[localStorage.getItem(CURRENT_BG_VALUE_LS)].style.display="block";
 }
 
@@ -133,26 +129,35 @@ slide_toggle.addEventListener("click",function()
     if(bgVisible===false)
     {
         bgVisible = true;
+        savelocal();
         judge(true);
     }
     else if(bgVisible===true)
     {
         bgVisible = false;
+        savelocal();
         judge(false);
 
     }
 });
 
-function BGinit()
+window.addEventListener('load', function()
 {
-    if(visitCnt === 0)
+    savelocal();
+    if(bgVisible === false)
     {
-        
+        judge(false);
     }
     else
     {
-
+        judge(true);
     }
+});
+
+
+function BGinit()
+{
+
 }
 
 BGinit();

@@ -150,14 +150,14 @@ function fadeIn(value)
                 if (opc < 4) 
                 {
                     opc++;
-                    console.log(opc);
+                    // console.log(opc);
 
                     arrowNext.style.opacity = `0.` + opc;
                     arrowPre.style.opacity = `0.` + opc;
                 }
                 else 
                 {
-                    console.log('clear');
+                    // console.log('clear');
                     clearInterval(Interval);
 
                 }
@@ -175,13 +175,13 @@ function fadeOut(value)
             let Interval = setInterval(function () {
                 if (opc > 0) {
                     opc--;
-                    console.log(opc);
+                    // console.log(opc);
 
                     arrowNext.style.opacity = `0.` + opc;
                     arrowPre.style.opacity = `0.` + opc;
                 }
                 else {
-                    console.log('clear');
+                    // console.log('clear');
                     clearInterval(Interval);
                     arrowNext.style.display="none";
                     arrowNext.style.display="none";

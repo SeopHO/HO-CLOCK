@@ -72,12 +72,14 @@ function viewImage()
 
     if(snowVisible === true && bgVisible === true)
     {
+        resetImage();
         ImageForSnow(bgValue);
     }
-    else if(snowVisible === false || bgVisible === false)
+    else if(bgVisible === true)
     {
         imageSlider[bgValue].style.display="block";
     }
+    
     // imageSlider[localStorage.getItem(CURRENT_BG_VALUE_LS)].style.opacity=1;
 }
 
@@ -87,15 +89,15 @@ function preImage()
     // imageSlider[bgValue-1].style.display="block";
     bgValue--;
     savelocal(bgValue);
-
     if(snowVisible === true && bgVisible === true)
     {
         ImageForSnow(bgValue);
     }
-    else if(snowVisible === false || bgVisible === false)
+    else if(bgVisible === true)
     {
         imageSlider[bgValue].style.display="block";
     }
+    // imageSlider[bgValue].style.display="block";
 
 }
 
@@ -106,15 +108,16 @@ function nextImage()
     // imageSlider[bgValue+1].style.display="block";
     bgValue++;
     savelocal(bgValue);
-
     if(snowVisible === true && bgVisible === true)
     {
+        resetImage();
         ImageForSnow(bgValue);
     }
-    else if(snowVisible === false || bgVisible === false)
+    else if(bgVisible === true)
     {
         imageSlider[bgValue].style.display="block";
     }
+    // imageSlider[bgValue].style.display="block";
 }
 
 arrowPre.addEventListener("click",function()
@@ -275,6 +278,5 @@ function judge()
     else if(snowVisible === false)
     {
         snow_fall.style.display="none";
-
     }
 }

@@ -39,12 +39,12 @@ body
     background-image: url("./images/bg0.jpg");
 }
 
-.slide2
+.slide2 
 {
     background-image: url("./images/bg1.jpg");
 }
 
-.slide3
+.slide3 
 {
     background-image: url("./images/bg2.jpg");
 }
@@ -197,4 +197,11 @@ input:checked + .toggle1:after ,input:checked + .toggle2:after
     font-size: 15px;
     font-weight: 400;
     color:#fff;
+}
+
+canvas
+{
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }

@@ -5,13 +5,18 @@ const arrowNext = document.getElementById("arrow-right");
 const slide_toggle = document.querySelector(".slide-toggle");
 const snow_toggle = document.querySelector(".snow-toggle");
 
-const snow_fall = document.getElementById("snow_fall");
+// const snow_fall = document.getElementById("snow_fall");
+const snow_fall = document.querySelector("canvas");
+
+
+// const snow_fall = document.querySelector(".particles-js-canvas-el");
+
 
 let bgValue=null;
 const CURRENT_BG_VALUE_LS = "Current-Background-Value";
 
 let bgVisible=false; 
-const BG_VISIBLE_LS = "Background-Visible";
+const BG_VISIBLE_LS = "Background-Visible"; 
 
 let visited = false;
 const VISITED_LS = "Visited";
@@ -19,6 +24,8 @@ const VISITED_LS = "Visited";
 let snowVisible = false;
 const SNOW_VISIBLE_LS = "Snow Visible";
 
+
+let bgLsValue=localStorage.getItem(CURRENT_BG_VALUE_LS);
 
 let opc;
 
@@ -30,21 +37,21 @@ function savelocal()
     localStorage.setItem(SNOW_VISIBLE_LS,snowVisible);
 }
 
-// function ImageForSnow(value)
-// {
-//     switch(value)
-//     {
-//         case 0:
-//             snow_fall.style.backgroundImage="url('./images/bg0.jpg')"
-//             break;
-//         case 1:
-//             snow_fall.style.backgroundImage="url('./images/bg1.jpg')"
-//             break;
-//         case 2:
-//             snow_fall.style.backgroundImage="url('./images/bg1.jpg')"
-//             break;
-//     }
-// }
+function ImageForSnow(value)
+{
+    switch(value)
+    {
+        case 0:
+            snow_fall.style.backgroundImage="url('./images/bg0.jpg')";
+            break;
+        case 1:
+            snow_fall.style.backgroundImage="url('./images/bg1.jpg')";
+            break;
+        case 2:
+            snow_fall.style.backgroundImage="url('./images/bg2.jpg')";
+            break;
+    }
+}
 
 function resetImage()
 {
@@ -55,10 +62,24 @@ function resetImage()
     }
 }
 
+function resetImageForSnow()
+{
+    snow_fall.style.backgroundImage=" ";
+}
+
 function startImage()
 {
     // resetImage();
-    imageSlider[localStorage.getItem(CURRENT_BG_VALUE_LS)].style.display="block";
+    // imageSlider[bgLsValue].style.display="block";
+
+    if(snowVisible === true && bgVisible === true)
+    {
+        ImageForSnow(bgValue);
+    }
+    else if(snowVisible === false || bgVisible === false)
+    {
+        imageSlider[bgValue].style.display="block";
+    }
     // imageSlider[localStorage.getItem(CURRENT_BG_VALUE_LS)].style.opacity=1;
 }
 
@@ -66,21 +87,40 @@ function preImage()
 {
     resetImage();
 
-    imageSlider[bgValue-1].style.display="block";
+    // imageSlider[bgValue-1].style.display="block";
+    
 
 
     bgValue--;
     savelocal(bgValue);
+
+    if(snowVisible === true && bgVisible === true)
+    {
+        ImageForSnow(bgValue);
+    }
+    else if(snowVisible === false || bgVisible === false)
+    {
+        imageSlider[bgValue].style.display="block";
+    }
+
 }
 
 function nextImage()
 {
     resetImage();
 
-    imageSlider[bgValue+1].style.display="block";
-
+    // imageSlider[bgValue+1].style.display="block";
     bgValue++;
     savelocal(bgValue);
+
+    if(snowVisible === true && bgVisible === true)
+    {
+        ImageForSnow(bgValue);
+    }
+    else if(snowVisible === false || bgVisible === false)
+    {
+        imageSlider[bgValue].style.display="block";
+    }
 }
 
 arrowPre.addEventListener("click",function()
@@ -169,6 +209,7 @@ function judge(bool)
     {
         console.log(0);
         resetImage();
+        resetImageForSnow();
         fadeOut('Arrow');
     }
 }
@@ -186,7 +227,6 @@ slide_toggle.addEventListener("click",function()
         bgVisible = false;
         savelocal();
         judge(false);
-
     }
 });
 
@@ -196,12 +236,15 @@ snow_toggle.addEventListener("click",function()
     {
         snowVisible = true;
         savelocal();
+        console.log(true);
+        snow_fall.style.display="block";
     }
     else if(snowVisible===true)
     {
         snowVisible = false;
         savelocal();
-
+        console.log(false);
+        snow_fall.style.display="none";
     }
 });
 
@@ -223,5 +266,14 @@ window.addEventListener('load', function()
     else
     {
         judge(true);
+    }
+
+    if(snowVisible===false)
+    {
+        snow_fall.style.display="none";
+    }
+    else
+    {
+        snow_fall.style.display="block";
     }
 });

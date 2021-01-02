@@ -8,9 +8,7 @@ const snow_toggle = document.querySelector(".snow-toggle");
 // const snow_fall = document.getElementById("snow_fall");
 const snow_fall = document.querySelector("canvas");
 
-
 // const snow_fall = document.querySelector(".particles-js-canvas-el");
-
 
 let bgValue=null;
 const CURRENT_BG_VALUE_LS = "Current-Background-Value";
@@ -23,7 +21,6 @@ const VISITED_LS = "Visited";
 
 let snowVisible = false;
 const SNOW_VISIBLE_LS = "Snow Visible";
-
 
 let bgLsValue=localStorage.getItem(CURRENT_BG_VALUE_LS);
 
@@ -64,12 +61,13 @@ function resetImage()
 
 function resetImageForSnow()
 {
-    snow_fall.style.backgroundImage=" ";
+    snow_fall.style.backgroundImage="";
 }
 
-function startImage()
+function viewImage()
 {
-    // resetImage();
+    resetImage();
+    
     // imageSlider[bgLsValue].style.display="block";
 
     if(snowVisible === true && bgVisible === true)
@@ -86,11 +84,7 @@ function startImage()
 function preImage()
 {
     resetImage();
-
     // imageSlider[bgValue-1].style.display="block";
-    
-
-
     bgValue--;
     savelocal(bgValue);
 
@@ -165,7 +159,6 @@ function fadeIn(value)
 
                 }
             }, 50);
-
     }
 
 }
@@ -192,27 +185,9 @@ function fadeOut(value)
 
                 }
             }, 50);
-
-    }
-
-}
-
-function judge(bool)
-{
-    if(bool === true)
-    {
-        console.log(1);
-        startImage();
-        fadeIn('Arrow');
-    }
-    else if(bool === false)
-    {
-        console.log(0);
-        resetImage();
-        resetImageForSnow();
-        fadeOut('Arrow');
     }
 }
+
 
 slide_toggle.addEventListener("click",function()
 {
@@ -220,13 +195,13 @@ slide_toggle.addEventListener("click",function()
     {
         bgVisible = true;
         savelocal();
-        judge(true);
+        judge();
     }
     else if(bgVisible===true)
     {
         bgVisible = false;
         savelocal();
-        judge(false);
+        judge();
     }
 });
 
@@ -235,19 +210,20 @@ snow_toggle.addEventListener("click",function()
     if(snowVisible===false)
     {
         snowVisible = true;
-        savelocal();
-        console.log(true);
-        snow_fall.style.display="block";
+        savelocal();  
+        judge();
     }
     else if(snowVisible===true)
     {
         snowVisible = false;
         savelocal();
-        console.log(false);
-        snow_fall.style.display="none";
+        judge();
+
     }
 });
 
+
+//처음 켰을 때,
 window.addEventListener('load', function()
 {
     savelocal();
@@ -261,19 +237,44 @@ window.addEventListener('load', function()
 
     if(bgVisible === false)
     {
-        judge(false);
+        judge();
     }
-    else
+    else if(bgVisible === true)
     {
-        judge(true);
+        judge();
     }
 
     if(snowVisible===false)
     {
-        snow_fall.style.display="none";
+        judge();
     }
-    else
+    else if(snowVisible === true)
+    {
+        judge();
+    }
+});
+
+function judge()
+{
+    if(bgVisible === true)
+    {
+        viewImage();
+        fadeIn('Arrow');
+    }
+    else if(bgVisible === false)
+    {
+        resetImage();
+        resetImageForSnow();
+        fadeOut('Arrow');
+    }
+
+    if(snowVisible === true)
     {
         snow_fall.style.display="block";
     }
-});
+    else if(snowVisible === false)
+    {
+        snow_fall.style.display="none";
+
+    }
+}

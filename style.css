@@ -199,7 +199,8 @@ input:checked + .toggle1:after ,input:checked + .toggle2:after
     color:#fff;
 }
 
-canvas
+/* particle.js */
+canvas 
 {
     background-size:cover;
     background-position: center;

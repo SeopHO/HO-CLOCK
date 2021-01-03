@@ -6,7 +6,7 @@ const slide_toggle = document.querySelector(".slide-toggle");
 const snow_toggle = document.querySelector(".snow-toggle");
 
 // const snow_fall = document.getElementById("snow_fall");
-const snow_fall = document.querySelector("canvas");
+const snow_fall = document.querySelector(".particles-js-canvas-el");
 
 // const snow_fall = document.querySelector(".particles-js-canvas-el");
 

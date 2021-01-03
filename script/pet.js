@@ -1,7 +1,9 @@
-const pet_toggle = document.querySelector(".pet-toggle");
+let WIDTH = 30;
+let HEIGHT = 30;
 
-pet_toggle.addEventListener("click",function()
-{
-    console.log(true); 
-});
-
+window.onload = () => {
+    const world = document.getElementById('pet');
+    world.style.width = `${WIDTH}px`;
+    world.style.height = `${HEIGHT}px`;   
+    world.style.background = '#eee';
+  }
